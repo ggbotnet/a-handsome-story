@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44, 64 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/obj_cup.png-2110355accc2679b1b5e0bb77aae11d7.stex"
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 16.7317
+height = 16.0
+
+[node name="Obj_Cup" type="StaticBody2D"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -17, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
+position = Vector2( 17, 0 )
+texture = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 43.7674, -8.73611 )
+shape = SubResource( 3 )

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/DeadBlock.gd" type="Script" id=1]
+[ext_resource path="res://scenes/PauseMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/GameOver.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 32 )
+
+[node name="AreaDead" type="Area2D"]
+position = Vector2( 1601, 2176 )
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
+visible = false
+margin_left = 1601.0
+margin_top = 2176.0
+margin_right = 1601.0
+margin_bottom = 2176.0
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 640.0
+margin_bottom = 360.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 128, -32 )
+shape = SubResource( 1 )
+
+[node name="TimerDead" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="body_entered" from="." to="." method="_on_AreaDead_body_entered"]
+[connection signal="timeout" from="TimerDead" to="." method="_on_TimerDead_timeout"]

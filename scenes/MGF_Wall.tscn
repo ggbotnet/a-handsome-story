@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/MGF_titleblock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/MGF_Wall.gd" type="Script" id=2]
+
+[node name="MGF_Wall" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MGF_Titleblock" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 752 )
+
+[node name="MGF_Titleblock2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 816 )
+
+[node name="MGF_Titleblock3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 880 )
+
+[node name="MGF_Titleblock4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 944 )
+
+[node name="MGF_Titleblock5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 1008 )
+
+[node name="MGF_Titleblock6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 1072 )
+
+[node name="MGF_Titleblock14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 752 )
+
+[node name="MGF_Titleblock13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 816 )
+
+[node name="MGF_Titleblock12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 880 )
+
+[node name="MGF_Titleblock11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 944 )
+
+[node name="MGF_Titleblock10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 1008 )
+
+[node name="MGF_Titleblock9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 1072 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 640, 912 )
+scale = Vector2( 38.4, 19.2 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

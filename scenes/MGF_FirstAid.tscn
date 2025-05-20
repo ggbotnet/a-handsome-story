@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/pickup_firstaid.png" type="Texture" id=1]
+[ext_resource path="res://scripts/MGF_FirstAid.gd" type="Script" id=2]
+[ext_resource path="res://scenes/EffectFalling.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 27.1821
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="MGF_FirstAid" type="Node2D"]
+position = Vector2( 0, 10 )
+script = ExtResource( 2 )
+
+[node name="MGF_FirstAid" type="Area2D" parent="."]
+
+[node name="EffectFalling" parent="MGF_FirstAid" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.392157 )
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 0, -10 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Sprite" type="Sprite" parent="MGF_FirstAid"]
+position = Vector2( 0, -10 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MGF_FirstAid"]
+position = Vector2( 0, -10 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MGF_FirstAid"]
+anims/fade_out = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="MGF_FirstAid"]
+position = Vector2( 4.76837e-06, -10 )
+scale = Vector2( 4, 4 )
+
+[node name="TimerFirstAid" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+[connection signal="body_entered" from="MGF_FirstAid" to="." method="_on_MGF_FirstAid_body_entered"]
+[connection signal="screen_exited" from="MGF_FirstAid/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="TimerFirstAid" to="." method="_on_TimerFirstAid_timeout"]

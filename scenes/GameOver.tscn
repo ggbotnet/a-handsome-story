@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui_bg_pause.png" type="Texture" id=3]
+[ext_resource path="res://assets/kurland_dynamicfont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/ui_bg_line.png" type="Texture" id=5]
+
+[node name="GameOver" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -128.0
+margin_right = 192.0
+margin_bottom = 128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_right = 384.0
+margin_bottom = 256.0
+texture = ExtResource( 3 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -90.5
+margin_right = 150.0
+margin_bottom = 90.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu"]
+margin_right = 300.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "GAME OVER!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureLine" type="TextureRect" parent="Menu"]
+margin_top = 55.0
+margin_right = 300.0
+margin_bottom = 71.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="Menu"]
+margin_top = 75.0
+margin_right = 300.0
+margin_bottom = 126.0
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="Menu"]
+margin_top = 130.0
+margin_right = 300.0
+margin_bottom = 181.0
+text = "Quit"
+[connection signal="pressed" from="Menu/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="Menu/QuitButton" to="." method="_on_QuitButton_pressed"]

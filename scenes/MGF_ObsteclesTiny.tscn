@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/mgf_obj_needle.png" type="Texture" id=1]
+[ext_resource path="res://scripts/mgf_obsteclestiny.gd" type="Script" id=2]
+[ext_resource path="res://scenes/EffectFalling.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 7.67647
+height = 64.6471
+
+[node name="MGF_ObsteclesTiny" type="StaticBody2D"]
+z_index = 2
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 56 )
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 6.10352e-05, 7.62939e-06 )
+scale = Vector2( 7.05, 10.25 )
+
+[node name="EffectFalling" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 48 )
+scale = Vector2( 0.5, 1.6 )
+z_index = -1
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

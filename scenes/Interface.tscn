@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Kurland.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/healthbar01.png" type="Texture" id=2]
+[ext_resource path="res://assets/healthbar03.png" type="Texture" id=3]
+[ext_resource path="res://assets/healthbar02.png" type="Texture" id=4]
+[ext_resource path="res://assets/healthbar04.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui_bg_ring.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 58
+font_data = ExtResource( 1 )
+
+[node name="Interface" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Finger_4" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 42, 106 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Finger_3" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 42, 106 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Finger_2" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 42, 106 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Finger_1" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 42, 106 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_left = 10.0
+margin_top = 202.0
+margin_right = 74.0
+margin_bottom = 266.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 28.4074
+margin_top = 206.492
+margin_right = 60.4074
+margin_bottom = 264.492
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.14902, 0.160784, 0.313726, 1 )
+tab_size = 5
+text = "0"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

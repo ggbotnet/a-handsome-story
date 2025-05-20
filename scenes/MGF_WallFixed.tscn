@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/MGF_titleblock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/MGF_Wall.gd" type="Script" id=2]
+
+[node name="MGF_WallFixed" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MGF_Titleblock" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, -16 )
+
+[node name="MGF_Titleblock2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 48 )
+
+[node name="MGF_Titleblock3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 112 )
+
+[node name="MGF_Titleblock4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 176 )
+
+[node name="MGF_Titleblock5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 240 )
+
+[node name="MGF_Titleblock6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 304 )
+
+[node name="MGF_Titleblock7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 368 )
+
+[node name="MGF_Titleblock8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 432 )
+
+[node name="MGF_Titleblock15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 496 )
+
+[node name="MGF_Titleblock16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 560 )
+
+[node name="MGF_Titleblock17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 624 )
+
+[node name="MGF_Titleblock18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 688 )
+
+[node name="MGF_Titleblock14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, -16 )
+
+[node name="MGF_Titleblock13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 48 )
+
+[node name="MGF_Titleblock12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 112 )
+
+[node name="MGF_Titleblock11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 176 )
+
+[node name="MGF_Titleblock10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 240 )
+
+[node name="MGF_Titleblock9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 304 )
+
+[node name="MGF_Titleblock19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 368 )
+
+[node name="MGF_Titleblock20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 432 )
+
+[node name="MGF_Titleblock21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 496 )
+
+[node name="MGF_Titleblock22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 560 )
+
+[node name="MGF_Titleblock23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 624 )
+
+[node name="MGF_Titleblock24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 992, 688 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 640, 336 )
+scale = Vector2( 39.2, 39.2 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

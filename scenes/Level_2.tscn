@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/gui_bg.png" type="Texture" id=1]
+[ext_resource path="res://scenes/MGF_Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/MGF_Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/MiniGameFalling.gd" type="Script" id=4]
+[ext_resource path="res://scenes/MGF_WallBg.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/NextLevelClosing.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/MGF_FirstAid.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/MGF_Ring.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/MGF_NextLevel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/MGF_WallFixed.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/MGF_BGFixed.tscn" type="PackedScene" id=12]
+
+[node name="MiniGameFalling" type="Node"]
+script = ExtResource( 4 )
+
+[node name="CanvasBG" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="bgcolor" type="ColorRect" parent="CanvasBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgimg" type="TextureRect" parent="CanvasBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MGF_BGFixed" parent="." instance=ExtResource( 12 )]
+
+[node name="NextLevelClosing" parent="." instance=ExtResource( 6 )]
+position = Vector2( 620, 364 )
+
+[node name="MGF_Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 620, 348 )
+z_index = 99
+
+[node name="MGF_WallBg" parent="." instance=ExtResource( 5 )]
+position = Vector2( 640, 360 )
+z_index = -1
+
+[node name="MGF_Wall" parent="." instance=ExtResource( 3 )]
+
+[node name="MGF_Wall2" parent="." instance=ExtResource( 11 )]
+
+[node name="TimerWall" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="TimerObstecles" type="Timer" parent="."]
+autostart = true
+
+[node name="TimerObsteclesTiny" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="TimerBG" type="Timer" parent="."]
+autostart = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Interface" parent="UI" instance=ExtResource( 7 )]
+
+[node name="MGF_FirstAid" parent="." instance=ExtResource( 8 )]
+position = Vector2( -48, -120 )
+
+[node name="MGF_Ring" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, -32 )
+
+[node name="MGF_NextLevel" parent="." instance=ExtResource( 10 )]
+position = Vector2( -416, -72 )
+[connection signal="timeout" from="TimerWall" to="." method="_on_TimerWall_timeout"]
+[connection signal="timeout" from="TimerObstecles" to="." method="_on_TimerObstecles_timeout"]
+[connection signal="timeout" from="TimerObsteclesTiny" to="." method="_on_TimerObsteclesTiny_timeout"]
+[connection signal="timeout" from="TimerBG" to="." method="_on_TimerBG_timeout"]
+[connection signal="health_pickup" from="MGF_FirstAid" to="MGF_Player" method="_on_MGF_FirstAid_health_pickup"]
+[connection signal="ring_collected" from="MGF_Ring" to="." method="_on_MGF_Ring_ring_collected"]

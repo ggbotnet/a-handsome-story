@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Lvl_Locker.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/NextLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=3]
+
+[node name="LevelPortal" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="NextLevel" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 36 )
+z_index = 1
+
+[node name="Lvl_Locker" parent="." instance=ExtResource( 1 )]
+z_index = 2
